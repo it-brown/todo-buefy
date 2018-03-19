@@ -8,7 +8,6 @@
 import { Vue, Component } from 'vue-property-decorator';
 import VueUtil from '@/scripts/util/VueUtil';
 import RootVue from '@/components/base/RootVue';
-import Sample from '@/components/sample/Sample.vue';
 
 import Buefy from 'buefy';
 
@@ -23,7 +22,7 @@ export default class Index extends RootVue {
 
     protected beforeCreate(): void {
         // Inner Vue 登録
-        VueUtil.registerComponents([Sample]);
+        VueUtil.registerComponents([]);
     }
 }
 </script>
