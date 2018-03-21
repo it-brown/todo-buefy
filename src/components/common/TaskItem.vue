@@ -1,9 +1,8 @@
 <template lang='pug'>
 .vue-task-item
-p.task-title(:class='{ hidden: todo.editing}' @click='triggerEditTask(uniqueID)')
-        | {{ todo.name }}
-    input.task-title(v-if='todo.editing' v-on:keyup.enter='triggerEditTask(uniqueID)'
-        v-model='todo.name')
+    p.task-title(:class='{ hidden: todo.editing}' @click='triggerEditTask(uniqueID)') {{ todo.name }}
+    b-input.task-title(v-if='todo.editing' @keyup.native.enter='triggerEditTask(uniqueID)' v-model='todo.name')
+
     .edit-bar
         .toggle-edit-bar
             img(:src='imgs["right"]')
@@ -78,14 +77,12 @@ export default class TaskItem extends Vue {
 
 .vue-task-item
     display: flex
-    // TODO: write cleanly
-    width: calc(100vw * 3 / 5  / 2 - 6px)
     height: 50px
     display: flex
     border: 1px solid black
     overflow: hidden
-    margin: 3px
-    border-radius: 3px
+    margin: 3px 0
+    border-radius: 5px
 
     & > .task-title
         flex: 5
