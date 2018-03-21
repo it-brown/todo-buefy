@@ -96,7 +96,4 @@ export default class CreateTask extends Vue {
 
             .input-field
                 margin: 0
-
-        // section.tasks
-        //     overflow: scroll
 </style>

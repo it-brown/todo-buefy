@@ -8,10 +8,10 @@
                 .container
                     .navbar-brand
                         h1.navbar-item Get things done
-                        span.navbar-burger.burger(data-target='navbarMenuHero')
+                        span.navbar-burger.burger(data-target='navbarMenuHero' @click='toggleNavbarMenu = !toggleNavbarMenu')
                             span(v-for='i in 3' :key='i')
 
-                    #navbarMenuHero.navbar-menu
+                    #navbarMenuHero.navbar-menu(:class='{ "is-active": toggleNavbarMenu }')
                         .navbar-end
                             a.navbar-item(:class='{ "is-active": (navbarMode == "HOME") }' @click='navbarMode = "HOME"') Home
                             a.navbar-item(:class='{ "is-active": (navbarMode == "APP") }' @click='navbarMode = "APP"') App
@@ -41,7 +41,6 @@ import OngoingTask from '@/components/OngoingTask.vue';
 import ArchivedTask from '@/components/ArchivedTask.vue';
 import TaskItem from '@/components/common/TaskItem.vue';
 
-
 import Buefy from 'buefy';
 
 Vue.use(Buefy);
@@ -52,6 +51,7 @@ Vue.use(Buefy);
 @Component
 export default class Index extends RootVue {
     public title: string = 'index';
+    protected toggleNavbarMenu: boolean = false;
     protected navbarMode: string = 'APP';
     protected tabMode: string = 'TASKS';
 
@@ -59,7 +59,6 @@ export default class Index extends RootVue {
         // Inner Vue 登録
         VueUtil.registerComponents([CreateTask, OngoingTask, ArchivedTask, TaskItem]);
     }
-
 }
 </script>
 
